@@ -1,0 +1,87 @@
+<script>
+    async function submitForm() {
+        const alertME =document.getElementById('alert');
+        const email = document.getElementById('email').value;
+        const pin = document.getElementById('pin').value;
+
+        try {
+            const response = await fetch('/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, pin }),
+            });
+            const data = await response.json();
+            if (response.ok) {
+                // Handle successful login, e.g., redirect to another page
+                console.log('Login successful');
+                alertME.textContent = data.message;
+
+                // sembunyikan
+                hideInputLogin ();
+            } else {
+                // Handle unsuccessful login
+                console.error('Login failed');
+                alertME.textContent = data.message;
+            }
+        } catch (error) {
+            console.error('Error during login:', error);
+        }
+    }
+
+    async function loginOTP() {
+        const alertME =document.getElementById('alert');
+        const email = document.getElementById('email').value;
+        const pin = document.getElementById('pin').value;
+        const otp = document.getElementById('otp').value;
+
+        try {
+            const response = await fetch(`/api/login/${email}/${pin}/${otp}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            const data = await response.json();
+            if (response.ok) {
+                // Handle successful login, e.g., redirect to another page
+                console.log('Login successful');
+                alertME.textContent = data.message;
+
+            // Set the token to local storage
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('alamat', data.alamat);
+            localStorage.setItem('secretKey', data.secretKey);
+
+            // Redirect to the home page
+            window.location.href = "/";
+
+            } else {
+                // Handle unsuccessful login
+                console.error('Login failed');
+                alertME.textContent = data.message;
+            }
+        } catch (error) {
+            console.error('Error during login:', error);
+        }
+    }
+
+    function hideInputLogin() {
+            const otp = document.getElementById('otp_c');
+            const otp_b = document.getElementById('otp_b');
+            const emailInput = document.getElementById('email');
+            const pinInput = document.getElementById('pin');
+
+            // 
+            emailInput.style.display = 'none';
+            pinInput.style.display = 'none';
+            otp_b.style.display = 'none';
+            otp.innerHTML=`        
+          <input type="text" id="otp" name="otp" required placeholder="otp" style="text-align: center;">
+          <br><br>
+          <button type="button" onclick="loginOTP()">Login</button>
+        `;
+        }
+
+</script>

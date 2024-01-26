@@ -1,0 +1,83 @@
+<script>
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Get the modal and buttons
+    var modal = document.getElementById('myModal');
+    var openModalBtn = document.getElementById('openModalBtn');
+    var closeModalBtn = document.getElementById('closeModalBtn');
+
+    // Open the modal
+    openModalBtn.addEventListener('click', function () {
+        modal.style.display = 'block';
+    });
+
+    // Close the modal
+    closeModalBtn.addEventListener('click', function () {
+        modal.style.display = 'none';
+    });
+
+    // Close the modal if the user clicks outside the modal content
+    window.addEventListener('click', function (event) {
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    });
+
+
+    // kirim
+    var modal_kirim = document.getElementById('kirim');
+    var openModalBtn_kirim = document.getElementById('kirim_open');
+    var closeModalBtn_kirim = document.getElementById('kirim_close');
+
+    openModalBtn_kirim.addEventListener('click', function () {
+        modal_kirim.style.display = 'block';
+    });
+    closeModalBtn_kirim.addEventListener('click', function () {
+        modal_kirim.style.display = 'none';
+    });
+    window.addEventListener('click', function (event) {
+        if (event.target === modal_kirim) {
+            modal_kirim.style.display = 'none';
+        }
+    });
+
+});
+
+    async function kirim() {
+        const alertME = document.getElementById('alertME');
+
+        const alamat = localStorage.getItem('alamat');
+        const secretKey = localStorage.getItem('secretKey');
+        const currency = document.getElementById('currency').value;
+        const jumlah = document.getElementById('jumlah').value;
+        const alamatTujuan = document.getElementById('alamatTujuan').value;
+
+        try {
+            const response = await fetch(`/api/s/${alamat}/${secretKey}/${currency}/${jumlah}/${alamatTujuan}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            const data = await response.json();
+            if (response.ok) {
+                // Handle successful login, e.g., redirect to another page
+                console.log('Login successful');
+                alertME.textContent = data.message;
+
+
+            // Redirect to the home page
+            //window.location.href = "/dasboard";
+
+            } else {
+                // Handle unsuccessful login
+                console.error('send failed');
+                alertME.textContent = data.message;
+            }
+        } catch (error) {
+            console.error('Error during send:', error);
+        }
+    }
+
+</script>

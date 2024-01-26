@@ -1,0 +1,38 @@
+<script>
+        async function submitForm() {
+        const alertME =document.getElementById('alert');
+        const email = document.getElementById('email').value;
+        const pin = document.getElementById('pin').value;
+
+        try {
+            const response = await fetch('/api/r', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, pin }),
+            });
+            const data = await response.json();
+            if (response.ok) {
+                console.log('register successful');
+                alertME.textContent = data.message;
+            // Redirect to the home page
+            showLoading();
+                setTimeout(() => {
+                    // Redirect to the home page after 10 seconds
+                    window.location.href = "/login";
+                }, 5000);
+            } else {
+                console.error('register failed');
+                alertME.textContent = data.message;
+            }
+        } catch (error) {
+            console.error('Error during register:', error);
+        }
+    }
+
+    function showLoading() {
+        // Implement your loading animation here, for example:
+        alert("Loading... Please wait.");
+    }
+</script>

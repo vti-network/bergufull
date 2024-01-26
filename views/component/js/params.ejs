@@ -1,0 +1,67 @@
+<script>
+
+    const truncateString = (inputString, maxLength) => {
+        if (inputString.length > maxLength) {
+            return inputString.substring(0, maxLength) + '...';
+        } else {
+            return inputString;
+        }
+    };
+    const address = '<%= address %>';
+        fetch(`/api/d/${address}`)
+            .then(response => response.json())
+            .then(data => {
+                // Call a function to populate the table with fetched data
+                populateTransactionTable(data);
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    
+        // Function to populate the table with data
+        function populateTransactionTable(data) {
+            const tableBody = document.querySelector('#transactionTable tbody');
+            const balanceTable = document.querySelector('#balanceTable #balanceTableBody');
+    
+            // Loop through the data and create table rows
+            data.forEach(item => {
+                item.balance.forEach(bal => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${bal.IDR}</td>
+                        <td>${bal.BERGU}</td>             
+                    `;
+                    balanceTable.appendChild(row);
+                    
+                });
+            });
+
+            data.forEach(item => {
+                item.transactions.forEach(transaction => {
+                    const row = document.createElement('tr');
+    
+                    const up = `${truncateString(transaction.pengirim, 5)}`;                               
+                    const down = `${truncateString(transaction.penerima, 5)}`;               
+                    const hash = `${truncateString(item.txhash && item.txhash.length > 0 ? item.txhash.join('<br>') : '-' , 5)}`;
+                    const tx = `${truncateString(item.txhash && item.txhash.length > 0 ? item.txhash.join('<br>') : '-')}`;
+                    const tes = `${truncateString(item.txhash.length > 0 ? item.txhash.join('') : '',5)}`;
+    
+    // <td>${item.txhash && item.txhash.length > 0 ? item.txhash.join('<br>') : '-'}</td>
+                    row.innerHTML = `
+                        
+                        <td><a href='/${hash}'>${hash}</td>
+                        <td>${transaction.date_time}</td>
+                        <td>${transaction.opt}</td>
+                        <td>${transaction.currency}</td>
+                        <td>${transaction.value}</td>
+                        <td><a href='/${transaction.pengirim}'>${up}<a></td>
+                        <td><a href='/${transaction.penerima}'>${down}<a></td>                  
+                    `;
+                    tableBody.appendChild(row);
+                    
+                });
+            });
+        }
+    
+    
+        const reloadInterval = 60000; // 60 detik
+        const intervalId = setInterval(fetch, reloadInterval);
+    </script>

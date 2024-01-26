@@ -1,0 +1,14 @@
+<script>
+        function togglePassword() {
+            const pininput = document.getElementById('pin');
+            const toggleButton = document.getElementById('togglePassword');
+
+            if (pininput.type === 'password') {
+                pininput.type = 'text';
+                toggleButton.textContent = 'Sembunyikan Password';
+            } else {
+                pininput.type = 'password';
+                toggleButton.textContent = 'Lihat Password';
+            }
+        }
+</script>

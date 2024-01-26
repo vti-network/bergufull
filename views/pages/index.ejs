@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../component/css/body'); %>
+    <%- include('../component/css/navbar'); %>
+    <title>Bergu app</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="Saepul Millah" />
+    <meta name="description" content="Bergu app p2p" />
+    <meta name="keywords" content="p2p,coin,duit" />  
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet" />
+
+</head>
+<body>
+    
+    <div class="navbar">
+        <div class="navbar-logo">
+            <!-- <img src="path/to/your/logo.png" alt="Logo"> -->
+            <span>bergu</span>
+        </div>
+        <div class="navbar-links">
+            <a href="/">Home</a>
+            <a href="#layanan">Layanan</a>
+            <a href="/dashboard" id="dashboarduser"></a>       
+            <a href="/login" id="loginLogoutLink">login</a>       
+        </div>
+
+    </div>
+            
+    <div>
+
+
+        <div class="content">
+            <div class="tconntainer">
+                <h2>Transaction History</h2>
+
+                <table id="transactionTable">
+                    <thead>
+                        <tr>
+                            
+                            <th>txhash</th>
+                            <th>date time</th>
+                            <th>Opt</th>
+                            <th>Value</th>
+                            <th>C</th>
+                            <th>Sender</th>
+                            <th>Receiver</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Table content will be dynamically populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <%- include('../component/js/tableDashboard'); %>
+        <%- include('../component/js/cek_token'); %>
+    </div>
+</body>
+</html>

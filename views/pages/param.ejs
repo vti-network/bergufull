@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../component/css/body'); %>
+    <%- include('../component/css/navbar'); %>
+    <title><% {address} %></title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="Saepul Millah" />
+    <meta name="description" content="Bergu app p2p" />
+    <meta name="keywords" content="p2p,coin,duit" />  
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-logo">
+            <!-- <img src="path/to/your/logo.png" alt="Logo"> -->
+            <span>bergu</span>
+        </div>
+        <div class="navbar-links">
+            <a href="/">Home</a>
+            <a href="#layanan">Layanan</a>
+            <a href="/dashboard" id="dashboarduser"> </a>       
+            <a href="/login" id="loginLogoutLink">login</a>       
+        </div>
+
+    </div>
+
+            
+    <div>
+        <div class="login-container">
+
+            <div class="tconntainer">
+                <table id="balanceTable">
+                    <span><%= address %></span><br><br>
+                    <thead>
+                        <tr>
+                            <th>idr</th>
+                            <th>Bergu</th>
+                        </tr>
+                    </thead>
+                    <tbody id="balanceTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="content">
+
+
+
+            <div class="tconntainer">
+                <table id="transactionTable">
+                    <thead>
+                        <tr>
+                            <th>txhash</th>
+                            <th>date time</th>
+                            <th>Opt</th>
+                            <th>Value</th>
+                            <th>C</th>
+                            <th>Sender</th>
+                            <th>Receiver</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+
+        
+        
+            <div class="hero-foot">
+                <div class="container has-text-centered">
+                <p class="footer-text">
+                    copyright@iming
+                </p>
+                </div>
+            </div>
+        </div>
+
+        <%- include('../component/js/params'); %>
+        <%- include('../component/js/cek_token'); %>
+    </div>
+</body>
+</html>

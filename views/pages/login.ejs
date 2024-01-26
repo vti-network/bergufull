@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('../component/css/body'); %>
+    <title>Login</title>
+</head>
+
+<body>
+  <div class="content">
+
+      <div class="login-container">
+        <div id="alert"></div>
+        <h2>Login</h2>
+
+        <form class="form" id="loginForm">
+          <div id="otp_c" class="form-group">
+          </div>
+            <div class="form-group">
+                <input type="text" id="email" name="email" required placeholder="email">
+            </div>
+            <div class="form-group">
+                <input type="password" id="pin" name="pin" required placeholder="pin" >
+                <!-- <button type="button" id="togglePassword" onclick="togglePassword()">Lihat Password</button> -->
+            </div>
+            <div class="form-group">
+                <button type="button" onclick="submitForm()" id="otp_b">otp</button>
+            </div>
+
+            <div class="tombol">
+              <p class="navbari">
+                <a href="/"> Home </a>
+                <span> : </span>
+                <a href="/register"> Register </a>
+              </p>
+            </div>
+        </form>
+      </div>
+
+  </div>
+
+      <%- include('../component/js/login_val'); %>
+      <%- include('../component/js/pinOff'); %>
+</body>
+</html>

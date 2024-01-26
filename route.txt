@@ -1,0 +1,21 @@
+localhost:3000 ------------------
+
+---frontend
+/                           //dashboard midlleware ejs html react next etc
+/:address                   //user midlleware
+
+
+---backend-with-api
+/api/r/:email/:password                                     //register post
+
+/api/l/:email/:password/:kodeotp                            //login get
+
+/api/l/:email/:password                                    //getotpbyemail post
+
+/api/v/:token                                               //jwt token login
+
+/api/s/:alamat/:secretKey/:currency/:value/:alamatTujuan    //send
+
+/api/cbtkn/:alamat/:secretKey/BTKN/:jumlah/IDR              //convert btkn to idr
+
+/api/cidr/:alamat/:secretKey/IDR/:jumlah/BTKN               //convert idr to btkn
