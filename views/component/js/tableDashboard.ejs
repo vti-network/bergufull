@@ -1,4 +1,23 @@
 <script>
+    
+function filterTable(inputId, columnIndex) {
+    const inputElement = document.getElementById(inputId);
+    const filterValue = inputElement.value.toUpperCase();
+    const table = document.getElementById('transactionTable');
+    const rows = table.getElementsByTagName('tr');
+
+    for (let i = 0; i < rows.length; i++) {
+        const cells = rows[i].getElementsByTagName('td')[columnIndex];
+        if (cells) {
+            const cellText = cells.textContent || cells.innerText;
+            if (cellText.toUpperCase().indexOf(filterValue) > -1) {
+                rows[i].style.display = '';
+            } else {
+                rows[i].style.display = 'none';
+            }
+        }
+    }
+}
 
 const truncateString = (inputString, maxLength) => {
     if (inputString.length > maxLength) {

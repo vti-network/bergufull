@@ -29,6 +29,18 @@ const validasiJumlahIDR = (req, res, next) => {
 
     next();
 };
+// Middleware untuk validasi jumlah IDR
+const validasiJumlahBERGU = (req, res, next) => {
+    const { berguAmount } = req.params;
+    const berguAmountTerparse = parseInt(berguAmount);
+
+    if (isNaN(berguAmountTerparse) || berguAmountTerparse <= 0) {
+        res.status(400).send('Jumlah IDR tidak valid');
+        return;
+    }
+
+    next();
+};
 
 // Rute untuk mengonversi IDR ke BERGU
 router.get('/:alamat/:secretKey/IDR/:idrAmount/BERGU', validasiJumlahIDR, (req, res) => {
@@ -94,6 +106,72 @@ router.get('/:alamat/:secretKey/IDR/:idrAmount/BERGU', validasiJumlahIDR, (req, 
         res.status(404).send('Data tidak ditemukan');
     }
 });
+
+router.get('/:alamat/:secretKey/BERGU/:berguAmount/IDR', validasiJumlahBERGU, (req, res) => {
+    const { alamat, secretKey, berguAmount } = req.params;
+
+    // Baca data dari file menggunakan middleware
+    let data = bacaDataDariFile();
+
+    // Temukan data berdasarkan secretKey
+    const indeksDataDitemukan = data.findIndex(entry => entry.alamat === alamat && entry.secretKey === secretKey);
+
+    if (indeksDataDitemukan !== -1) {
+        // Jika data ditemukan, konversi IDR ke BERGU dengan biaya
+        const biayaGas = 500; // Biaya gas untuk konversi
+        const jumlahTerkonversi = parseInt(berguAmount) - biayaGas;
+
+        // Periksa apakah pengguna memiliki saldo cukup di IDR
+        if (parseInt(data[indeksDataDitemukan].balance[0].IDR) < parseInt(berguAmount)) {
+            //res.status(400).send('Saldo IDR tidak mencukupi');
+            res.status(400).json({
+                success: false,
+                message: 'Saldo bergu tidak mencukupi',
+            });
+            return;
+        }
+
+        // Perbarui saldo
+        data[indeksDataDitemukan].balance[0].BERGU = (parseInt(data[indeksDataDitemukan].balance[0].BERGU) - parseInt(berguAmount)).toString();
+        data[indeksDataDitemukan].balance[0].IDR = (parseInt(data[indeksDataDitemukan].balance[0].IDR) + jumlahTerkonversi).toString();
+
+        // Buat entri histori
+        const hs = {
+            date_time: getDateTimeNow(),
+            opt: 'convert',
+            value: parseInt(berguAmount),
+            currency: 'bergu > idr',
+            pengirim: alamat,
+            penerima: alamat
+        };
+
+        if (!data[indeksDataDitemukan].history) {
+            data[indeksDataDitemukan].history = { transactions: [] };
+        }
+
+        data[indeksDataDitemukan].history.transactions.push(hs);
+
+        // Perbarui file dengan data yang telah dimodifikasi
+        try {
+            fs.writeFileSync(dbFilePath, JSON.stringify(data, null, 2), 'utf8');
+            // Respon dengan data yang diperbarui
+            //res.json(data[indeksDataDitemukan].history.transactions);
+                //kirim respone json ke client
+                res.json({
+                    success: true,
+                    message: 'convert idr to bergu successful',
+                });
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Error saat memperbarui data');
+        }
+    } else {
+        // Jika data tidak ditemukan, kirim respons 404
+        res.status(404).send('Data tidak ditemukan');
+    }
+});
+
+
 
 module.exports = router;
 

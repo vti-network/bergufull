@@ -1,106 +1,112 @@
 [
   {
-    "email": "lobaduit1991@gmail.com",
+    "email": "bos@me",
     "pin": "070717",
-    "alamat": "x062f05b5c9695fab09277a254fd713cfcbfdcf3a8a71278d3333e75f251855c32a4",
-    "secretKey": "409a7a59499cd6f58501db5e9824856ce4edb03957453fb97c1e48444df9f80a",
+    "alamat": "123",
+    "secretKey": "123",
     "balance": [
       {
-        "IDR": "9999889000",
-        "BERGU": "9999989500"
+        "BERGU": "30000"
       }
     ],
     "profile": [
       {
-        "name": "",
-        "handphone": ""
+        "username": "bos@me"
+      }
+    ],
+    "device": [
+      {
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
       }
     ],
     "history": {
-      "created": "2024-01-26 01:42:40",
+      "created": "2024-01-27 06:46:10",
       "transactions": [
         {
-          "date_time": "2024-01-26 03:37:45",
-          "opt": "kirim",
-          "currency": "IDR",
-          "value": "10000",
-          "pengirim": "x062f05b5c9695fab09277a254fd713cfcbfdcf3a8a71278d3333e75f251855c32a4",
-          "penerima": "x0627321a5dde05c81c584d8dc4f306d25f1cd7eb88f5efbe7bfef4855852494c313"
-        },
-        {
-          "date_time": "2024-01-26 03:48:15",
-          "opt": "kirim",
-          "currency": "BERGU",
-          "value": "10000",
-          "pengirim": "x062f05b5c9695fab09277a254fd713cfcbfdcf3a8a71278d3333e75f251855c32a4",
-          "penerima": "x0627321a5dde05c81c584d8dc4f306d25f1cd7eb88f5efbe7bfef4855852494c313"
-        },
-        {
-          "date_time": "2024-01-26 03:54:18",
-          "opt": "kirim",
-          "currency": "IDR",
-          "value": "100000",
-          "pengirim": "x062f05b5c9695fab09277a254fd713cfcbfdcf3a8a71278d3333e75f251855c32a4",
-          "penerima": "x0627321a5dde05c81c584d8dc4f306d25f1cd7eb88f5efbe7bfef4855852494c313"
-        }
-      ]
-    },
-    "txhash": [],
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxvYmFkdWl0MTk5MUBnbWFpbC5jb20iLCJsb2dpblRpbWUiOiIyMDI0LTAxLTI2IDAzOjM3OjI2IiwiaWF0IjoxNzA2MjE1MDQ2LCJleHAiOjE3MDYzMDE0NDZ9.modF9bnrq1-ccBvwwA8TxyUEZ8coMmr5DPsJX8TpxxQ",
-    "otp": "833409"
-  },
-  {
-    "email": "azpwkk@gmail.com",
-    "pin": "070717",
-    "alamat": "x0627321a5dde05c81c584d8dc4f306d25f1cd7eb88f5efbe7bfef4855852494c313",
-    "secretKey": "187d0ed70c583a8f5439fdeaece5d820acfc3873c49ae22639e31679dc50a13e",
-    "balance": [
-      {
-        "IDR": "110000",
-        "BERGU": "10000"
-      }
-    ],
-    "profile": [
-      {
-        "name": "",
-        "handphone": ""
-      }
-    ],
-    "history": {
-      "created": "2024-01-26 03:36:50",
-      "transactions": [
-        {
-          "date_time": "2024-01-26 03:37:45",
+          "date_time": "2024-01-27 06:54:42",
           "opt": "terima",
-          "currency": "IDR",
-          "value": "10000",
-          "penerima": "x0627321a5dde05c81c584d8dc4f306d25f1cd7eb88f5efbe7bfef4855852494c313",
-          "pengirim": "x062f05b5c9695fab09277a254fd713cfcbfdcf3a8a71278d3333e75f251855c32a4"
+          "currency": "BERGU",
+          "value": "10000000",
+          "penerima": "123",
+          "pengirim": "x0629eeabb3d298dba1b8f6d6114b5c6116a3ad21ca313ed1ef3c3f01e7593b3118c"
         },
         {
-          "date_time": "2024-01-26 03:48:15",
+          "date_time": "2024-01-27 06:56:22",
           "opt": "terima",
           "currency": "BERGU",
           "value": "10000",
-          "penerima": "x0627321a5dde05c81c584d8dc4f306d25f1cd7eb88f5efbe7bfef4855852494c313",
-          "pengirim": "x062f05b5c9695fab09277a254fd713cfcbfdcf3a8a71278d3333e75f251855c32a4"
+          "penerima": "123",
+          "pengirim": "x0629eeabb3d298dba1b8f6d6114b5c6116a3ad21ca313ed1ef3c3f01e7593b3118c"
         },
         {
-          "date_time": "2024-01-26 03:54:18",
+          "date_time": "2024-01-27 06:56:43",
           "opt": "terima",
-          "currency": "IDR",
-          "value": "100000",
-          "penerima": "x0627321a5dde05c81c584d8dc4f306d25f1cd7eb88f5efbe7bfef4855852494c313",
-          "pengirim": "x062f05b5c9695fab09277a254fd713cfcbfdcf3a8a71278d3333e75f251855c32a4"
+          "currency": "BERGU",
+          "value": "10000",
+          "penerima": "123",
+          "pengirim": "x0629eeabb3d298dba1b8f6d6114b5c6116a3ad21ca313ed1ef3c3f01e7593b3118c"
         }
       ]
     },
     "txhash": [
-      "f800ea77f42193933a6fa325e9f487576d2c53475a2ca398ce86b3ce831c6bd8",
-      "b73287da0b0eb7069e4f9875c5266fe024d3b66ad82dad90ea4171c16208fc2a",
-      "bc8404ae334e9800092d7927719e28051be93e83c3768c4817ff792785fedba2"
+      "834f92ecfb6afd0f494dc2ac52503c7d60fe54cedb303d1142a94f610b149520",
+      "74ed0469cab7215295e5b5313a7f616efd97749718a63953e650aadcd655e014",
+      "57e3bc000b5d518272cf6061b51033a581b9a67eecf659371239d00687e28f2b"
     ],
-    "token": "",
-    "otp": ""
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxvYmFkdWl0MTk5MUBnbWFpbC5jb20iLCJsb2dpblRpbWUiOiIyMDI0LTAxLTI3IDA2OjQ2OjQ2IiwiaWF0IjoxNzA2MzEyODA2LCJleHAiOjE3MDYzOTkyMDZ9.afIPFu2U7J_YS-uxRgJeEhfnofjp9Q8YfN6DFpbnyjs",
+    "otp": "677022"
+  },
+  {
+    "email": "lobaduit1991@gmail.com",
+    "pin": "070717",
+    "alamat": "x0629eeabb3d298dba1b8f6d6114b5c6116a3ad21ca313ed1ef3c3f01e7593b3118c",
+    "secretKey": "83ba3d7f86d8bf0d57060d448cb90754cbee3eba688fc39bc86b2f336b161041",
+    "balance": [
+      {
+        "BERGU": "999999999999968500"
+      }
+    ],
+    "profile": [
+      {
+        "username": "lobaduit1991"
+      }
+    ],
+    "device": [
+      {
+        "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      }
+    ],
+    "history": {
+      "created": "2024-01-27 06:46:10",
+      "transactions": [
+        {
+          "date_time": "2024-01-27 06:54:42",
+          "opt": "kirim",
+          "currency": "BERGU",
+          "value": "10000",
+          "pengirim": "x0629eeabb3d298dba1b8f6d6114b5c6116a3ad21ca313ed1ef3c3f01e7593b3118c",
+          "penerima": "123"
+        },
+        {
+          "date_time": "2024-01-27 06:56:22",
+          "opt": "kirim",
+          "currency": "BERGU",
+          "value": "10000",
+          "pengirim": "x0629eeabb3d298dba1b8f6d6114b5c6116a3ad21ca313ed1ef3c3f01e7593b3118c",
+          "penerima": "123"
+        },
+        {
+          "date_time": "2024-01-27 06:56:43",
+          "opt": "kirim",
+          "currency": "BERGU",
+          "value": "10000",
+          "pengirim": "x0629eeabb3d298dba1b8f6d6114b5c6116a3ad21ca313ed1ef3c3f01e7593b3118c",
+          "penerima": "123"
+        }
+      ]
+    },
+    "txhash": [],
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxvYmFkdWl0MTk5MUBnbWFpbC5jb20iLCJsb2dpblRpbWUiOiIyMDI0LTAxLTI3IDA2OjQ2OjQ2IiwiaWF0IjoxNzA2MzEyODA2LCJleHAiOjE3MDYzOTkyMDZ9.afIPFu2U7J_YS-uxRgJeEhfnofjp9Q8YfN6DFpbnyjs",
+    "otp": "677022"
   }
 ]

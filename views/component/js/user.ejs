@@ -16,7 +16,7 @@
         const U_secretkey = document.getElementById('secretKey');
         if (checkLoginStatus()) {
             U_alamat.innerHTML= alamat;
-            U_secretkey.innerHTML= secretKey;
+            //U_secretkey.innerHTML= secretKey;
         } else {
             U_alamat.innerHTML= 'null';
             U_secretkey.innerHTML= 'null';
@@ -48,19 +48,26 @@
         function populateTransactionTable(data) {
             const tableBody = document.querySelector('#transactionTable tbody');
             const balanceTable = document.querySelector('#balanceTable #balanceTableBody');
-    
+            
+            const bIDR = document.getElementById('balIDR');
+            const bBERGU = document.getElementById('balBERGU');
             // Loop through the data and create table rows
             data.forEach(item => {
                 item.balance.forEach(bal => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${bal.IDR}</td>
-                        <td>${bal.BERGU}</td>             
-                    `;
-                    balanceTable.appendChild(row);
-                    
+                    // const row = document.createElement('tr');
+                    // row.innerHTML = `
+                    //     <td id="bIDR">${bal.IDR}</td>
+                    //     <td id="bBERGU">${bal.BERGU}</td>             
+                    // `;
+                    // balanceTable.appendChild(row);
+
+
+                    // bIDR.innerHTML=`idr    : ${bal.IDR}`;
+                  bBERGU.innerHTML=`bergu  : ${bal.BERGU}`;
                 });
             });
+
+
 
             data.forEach(item => {
                 item.transactions.forEach(transaction => {
@@ -87,6 +94,9 @@
                     
                 });
             });
+
+
+
         }
     
     

@@ -13,9 +13,11 @@ try {
     datausers = JSON.parse(fileContent);
 } catch (error) {}
 
-// /api/r
+//api/r
 router.post('/', (req, res) => {
-    const { email, pin } = req.body;
+    const { email, pin ,phone } = req.body;
+    const username = email.split('@')[0];
+    const ua = req.headers['user-agent'];
 
     if (!email || !pin) {
         res.status(400).json(
@@ -68,14 +70,18 @@ router.post('/', (req, res) => {
         secretKey,
         balance: [
             {
-                IDR: '0',
                 BERGU: '0',
             },
         ],
         profile: [
             {
-                name: '',
-                handphone: '',
+                username: username,
+                phone: phone,
+            },
+        ],
+        device: [
+            {
+                ua: ua,
             },
         ],
         history: history,
@@ -88,15 +94,15 @@ router.post('/', (req, res) => {
     fs.writeFileSync(dbusersPath, JSON.stringify(datausers, null, 2), 'utf8');
 
     //kirim respone json ke client
-    res.json({
+    res.json(200)({
         success: true,
         message: 'Register successful',
-        info: {
-            email: email,
-            pin: pin,
-            alamat: `x062${hash}`,
-            secretKey: secretKey,
-        },
+        // info: {
+        //     email: email,
+        //     pin: pin,
+        //     alamat: `x062${hash}`,
+        //     secretKey: secretKey,
+        // },
     });
 
     // cek by server

@@ -1,4 +1,11 @@
 <script>
+    function generateQRCode(hash) {
+    // Create a new QRCode instance
+    const qr = new QRCode(document.getElementById('qrcode'), {
+        text: hash,
+        width: 128,
+        height: 128
+    });}
 
     const truncateString = (inputString, maxLength) => {
         if (inputString.length > maxLength) {
@@ -8,7 +15,8 @@
         }
     };
     const address = '<%= address %>';
-        fetch(`/api/d/${address}`)
+    document.getElementById('alamat').innerHTML=address;
+    fetch(`/api/d/${address}`)
             .then(response => response.json())
             .then(data => {
                 // Call a function to populate the table with fetched data
@@ -20,19 +28,17 @@
         function populateTransactionTable(data) {
             const tableBody = document.querySelector('#transactionTable tbody');
             const balanceTable = document.querySelector('#balanceTable #balanceTableBody');
-    
+            
+            const bIDR = document.getElementById('balIDR');
+            const bBERGU = document.getElementById('balBERGU');
             // Loop through the data and create table rows
             data.forEach(item => {
                 item.balance.forEach(bal => {
-                    const row = document.createElement('tr');
-                    row.innerHTML = `
-                        <td>${bal.IDR}</td>
-                        <td>${bal.BERGU}</td>             
-                    `;
-                    balanceTable.appendChild(row);
-                    
+                  bBERGU.innerHTML=`bergu  : ${bal.BERGU}`;
                 });
             });
+
+
 
             data.forEach(item => {
                 item.transactions.forEach(transaction => {
@@ -42,7 +48,7 @@
                     const down = `${truncateString(transaction.penerima, 5)}`;               
                     const hash = `${truncateString(item.txhash && item.txhash.length > 0 ? item.txhash.join('<br>') : '-' , 5)}`;
                     const tx = `${truncateString(item.txhash && item.txhash.length > 0 ? item.txhash.join('<br>') : '-')}`;
-                    const tes = `${truncateString(item.txhash.length > 0 ? item.txhash.join('') : '',5)}`;
+                    const tes = `${truncateString(item.txhash.length > 0 ? item.txhash.join('') : '')}`;
     
     // <td>${item.txhash && item.txhash.length > 0 ? item.txhash.join('<br>') : '-'}</td>
                     row.innerHTML = `
@@ -59,9 +65,17 @@
                     
                 });
             });
+
+
+
         }
     
     
-        const reloadInterval = 60000; // 60 detik
+        const reloadInterval = 1000; // 60 detik
         const intervalId = setInterval(fetch, reloadInterval);
+
+        const qrMEftc = document.getElementById('alamat').value;
+        const hashToGenerateQR = qrMEftc;
+    generateQRCode(hashToGenerateQR);
+
     </script>

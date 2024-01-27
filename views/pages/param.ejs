@@ -22,7 +22,7 @@
         </div>
         <div class="navbar-links">
             <a href="/">Home</a>
-            <a href="#layanan">Layanan</a>
+            <a href="/layanan">whitepaper</a>
             <a href="/dashboard" id="dashboarduser"> </a>       
             <a href="/login" id="loginLogoutLink">login</a>       
         </div>
@@ -31,55 +31,49 @@
 
             
     <div>
-        <div class="login-container">
-
-            <div class="tconntainer">
-                <table id="balanceTable">
-                    <span><%= address %></span><br><br>
-                    <thead>
-                        <tr>
-                            <th>idr</th>
-                            <th>Bergu</th>
-                        </tr>
-                    </thead>
-                    <tbody id="balanceTableBody">
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="content">
 
 
-
-            <div class="tconntainer">
-                <table id="transactionTable">
-                    <thead>
-                        <tr>
-                            <th>txhash</th>
-                            <th>date time</th>
-                            <th>Opt</th>
-                            <th>Value</th>
-                            <th>C</th>
-                            <th>Sender</th>
-                            <th>Receiver</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
-
+        <div>
+            <div class="login-container">
+                <div class="container">
+                    <!-- <img src="/w3images/bandmember.jpg" alt="Avatar" style="width:90px"> -->
+                    <div class="card">
+                        <div id="qrcode" class="imgqr"></div>
+                    </div>
+                    
+                        <!-- <div id="balIDR" style="margin-bottom: 5px;"></div> -->
+                        <div id="balBERGU" style="margin-bottom: 5px;"></div>
+                        <!-- <span><%= address %></span><br><br>   -->
+                    <span id="alamat" style="color: brown; font-size: 10px;"><% {address} %></span><br>
+                  </div>
+      
+                    <div class="container">
+                        
+                        <div><br>
+                            <span>history user</span><br><br>
+                            
+                                <table id="transactionTable">
+                                    <thead>
+                                        <tr>
+                                            <th>txhash</th>
+                                            <th>date time</th>
+                                            <th>Opt</th>
+                                            <th>Value</th>
+                                            <th>C</th>
+                                            <th>Sender</th>
+                                            <th>Receiver</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                           
+                        </div>
         
-        
-            <div class="hero-foot">
-                <div class="container has-text-centered">
-                <p class="footer-text">
-                    copyright@iming
-                </p>
-                </div>
+                    </div>
+                </div>         
             </div>
-        </div>
+    
 
         <%- include('../component/js/params'); %>
         <%- include('../component/js/cek_token'); %>

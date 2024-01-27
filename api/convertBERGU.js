@@ -86,6 +86,7 @@ router.get('/:alamat/:secretKey/BERGU/:berguAmount/IDR', (req, res) => {
         // Jika data tidak ditemukan, kirim respons 404
         res.status(404).send('Data tidak ditemukan');
     }
+    console.log(data);
 });
 
 module.exports = router;

@@ -7,6 +7,7 @@ const path = require('path');
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
 //app.set('views', path.join(__dirname, 'views')); // Set the views directory
+app.use(express.static(__dirname + '/pages'));
 
 // Enable CORS
 app.use(cors());
@@ -28,11 +29,11 @@ app.use('/api/s', send);
 const dashboard = require('./api/dashboard');
 app.use('/api/d', dashboard);
 
-const BERGUtoIDR = require('./api/convertBERGU');
-app.use('/api/bergu', BERGUtoIDR);
+// const BERGUtoIDR = require('./api/convertBERGU');
+// app.use('/api/bergu', BERGUtoIDR);
 
 const IDRtoBERGU = require('./api/convertIDR');
-app.use('/api/idr', IDRtoBERGU);
+app.use('/api/c', IDRtoBERGU);
 
 
 // Middleware untuk mengizinkan koneksi dari aplikasi React yang berjalan di localhost:3000

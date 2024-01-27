@@ -12,6 +12,7 @@
         <meta name="description" content="Bergu app p2p" />
         <meta name="keywords" content="p2p,coin,duit" />  
         <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet" />
+        <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
     
     </head>
 <body>
@@ -22,10 +23,8 @@
         </div>
         <div class="navbar-links">
             <a href="/">Home</a>
-            <a href="#" id="kirim_open">kirim</a>            
-            <a href="#">convert</a>            
-            <a href="#">wd</a>            
-            <a href="#" id="openModalBtn">history</a>            
+            <a href="#" id="kirim_open">pay</a>                     
+            <a href="#">wd</a>                 
         </div>
 
     </div>
@@ -33,64 +32,45 @@
             
     <div>
         <div class="login-container">
-
-            <div class="tconntainer">
-                    <table id="u">
-                        <tr>
-                            <th>alamat</th>
-                        </tr>
-                        <tbody>
-                            <td>
-                                <span id="alamat" style="color: brown; font-size: 10px;"></span><br><br>
-                            </td>
-                        </tbody>                        
-                    </table>       
-
-                    <table id="u">
-                        <tr>
-                            <th>secretKey</th>
-                        </tr>
-                        <tbody>
-                            <td>
-                                <span id="secretKey" style="color: brown; font-size: 10px;"></span><br><br>
-                            </td>
-                        </tbody>
-                    </table>                
-                    <table id="balanceTable">
+            <div class="container">
+                <!-- <img src="/w3images/bandmember.jpg" alt="Avatar" style="width:90px"> -->
+                <div class="card">
+                    <div id="qrcode" onclick="copyToClipboard()" class="imgqr"></div>
+                </div>
+                
+                    <!-- <div id="balIDR" style="margin-bottom: 5px;"></div> -->
+                    <div id="balBERGU" style="margin-bottom: 5px;"></div>  
+                <span id="alamat" style="color: brown; font-size: 10px;"></span><br>
+              </div>
+  
+                <div class="container">
+                    <img src="./history.png" alt="history" class="collapsible">
+                    <div><br>
+                        <span>history user</span>
                         
-                    <thead>
-                        <tr>
-                            <th>idr</th>
-                            <th>Bergu</th>
-                        </tr>
-                    </thead>
-                    <tbody id="balanceTableBody">
-                    </tbody>
-                </table>
-            </div>
+                            <table id="transactionTable">
+                                <thead>
+                                    <tr>
+                                        <th>txhash</th>
+                                        <th>date time</th>
+                                        <th>Opt</th>
+                                        <th>Value</th>
+                                        <th>C</th>
+                                        <th>Sender</th>
+                                        <th>Receiver</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                       
+                    </div>
+    
+                </div>
+            </div>         
         </div>
 
-        <!-- <div class="content">
-            <span>history user</span>
-            <div class="tconntainer">
-                <table id="transactionTable">
-                    <thead>
-                        <tr>
-                            <th>txhash</th>
-                            <th>date time</th>
-                            <th>Opt</th>
-                            <th>Value</th>
-                            <th>C</th>
-                            <th>Sender</th>
-                            <th>Receiver</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
-        </div> -->
-
+        
         <!-- table kirim -->
         <div id="kirim" class="modal">
             <div class="modal-content">
@@ -107,40 +87,10 @@
                               <input type="text" id="jumlah" name="jumlah" required placeholder="jumlah">
                           </div>
                           <div class="form-group">
-                              <input type="text" id="currency" name="currency" required placeholder="IDR/BERGU">
-                          </div>
-                          <div class="form-group">
                               <button type="button" onclick="kirim()" id="otp_b">kirim</button>
                           </div>
                       </form>
 
-                </div>
-            </div>
-        </div>
-
-        <!-- table history -->
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close" id="closeModalBtn">&times;</span>
-                <div class="content">
-                    <span>history user</span>
-                    <div class="tconntainer">
-                        <table id="transactionTable">
-                            <thead>
-                                <tr>
-                                    <th>txhash</th>
-                                    <th>date time</th>
-                                    <th>Opt</th>
-                                    <th>Value</th>
-                                    <th>C</th>
-                                    <th>Sender</th>
-                                    <th>Receiver</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
             </div>
         </div>

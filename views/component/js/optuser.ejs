@@ -2,28 +2,6 @@
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Get the modal and buttons
-    var modal = document.getElementById('myModal');
-    var openModalBtn = document.getElementById('openModalBtn');
-    var closeModalBtn = document.getElementById('closeModalBtn');
-
-    // Open the modal
-    openModalBtn.addEventListener('click', function () {
-        modal.style.display = 'block';
-    });
-
-    // Close the modal
-    closeModalBtn.addEventListener('click', function () {
-        modal.style.display = 'none';
-    });
-
-    // Close the modal if the user clicks outside the modal content
-    window.addEventListener('click', function (event) {
-        if (event.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
-
 
     // kirim
     var modal_kirim = document.getElementById('kirim');
@@ -42,19 +20,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+
 });
 
     async function kirim() {
         const alertME = document.getElementById('alertME');
-
         const alamat = localStorage.getItem('alamat');
         const secretKey = localStorage.getItem('secretKey');
-        const currency = document.getElementById('currency').value;
         const jumlah = document.getElementById('jumlah').value;
         const alamatTujuan = document.getElementById('alamatTujuan').value;
 
         try {
-            const response = await fetch(`/api/s/${alamat}/${secretKey}/${currency}/${jumlah}/${alamatTujuan}`, {
+            const response = await fetch(`/api/s/${alamat}/${secretKey}/BERGU/${jumlah}/${alamatTujuan}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -65,10 +42,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Handle successful login, e.g., redirect to another page
                 console.log('Login successful');
                 alertME.textContent = data.message;
-
-
-            // Redirect to the home page
-            //window.location.href = "/dasboard";
+                setTimeout(() => {
+                    // Redirect to the home page after 10 seconds
+                    window.location.href = "/dashboard";
+                }, 2000);
 
             } else {
                 // Handle unsuccessful login
@@ -80,4 +57,40 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    function generateQRCode(hash) {
+    // Create a new QRCode instance
+    const qr = new QRCode(document.getElementById('qrcode'), {
+        text: hash,
+        width: 128,
+        height: 128
+    });
+
+    // You can customize the width and height according to your requirements
+}
+
+function copyToClipboard() {
+    const qrcodeElement = document.getElementById('qrcode');
+
+    // Create a range and select the text inside the qrcodeElement
+    const range = document.createRange();
+    range.selectNode(qrcodeElement);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+
+    // Execute the copy command
+    document.execCommand('copy');
+
+    // Clean up and deselect the text
+    window.getSelection().removeAllRanges();
+
+    // Show a notification or perform any other action to indicate successful copy
+    alert('QR Code copied to clipboard');
+}
+// Example usage
+const hashToGenerateQR = alamat;
+generateQRCode(hashToGenerateQR);
+
+
 </script>
+
+
